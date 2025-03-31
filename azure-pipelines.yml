@@ -1,5 +1,5 @@
 trigger:
-  - main  # Change this to 'main' if you want to trigger on main branch commits
+  - main  # Change this to the desired branch
 
 pool:
   name: Default  # Use the correct agent pool name where your self-hosted agent is running
@@ -7,11 +7,12 @@ pool:
     - Agent.Name -equals AgentSelfHosted  # Ensure the correct agent is selected
 
 steps:
-  - checkout: self:
-    - task: Docker@2
-      displayName: Build an image
-      inputs:
-        command: build
-        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-        tags: |
-          $(tag)
+  - checkout: self  # Removed the incorrect colon (:)
+
+  - task: Docker@2
+    displayName: Build an image
+    inputs:
+      command: build
+      dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+      tags: |
+        $(tag)
