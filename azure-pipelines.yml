@@ -1,5 +1,5 @@
 trigger:
-  - DEV  # Change this to 'main' if you want to trigger on main branch commits
+  - main  # Change this to 'main' if you want to trigger on main branch commits
 
 pool:
   name: Default  # Use the correct agent pool name where your self-hosted agent is running
